@@ -16,16 +16,16 @@ resource "aws_ecs_task_definition" "Go-API" {
   family                   = "Go-API"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = 256
-  memory                   = 512
+  cpu                      = 512
+  memory                   = 1024
   execution_role_arn       = aws_iam_role.cargo.arn
   container_definitions = jsonencode(
     [
       {
         "name"      = "homolog"
         "image"     = var.imagem
-        "cpu"       = 256
-        "memory"    = 512
+        "cpu"       = 512
+        "memory"    = 1024
         "essential" = true
         "portMappings" = [
           {
