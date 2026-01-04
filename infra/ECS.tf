@@ -33,6 +33,14 @@ resource "aws_ecs_task_definition" "Go-API" {
             "hostPort"      = 8000
           }
         ]
+        logConfiguration = {
+          "logDriver" = "awslogs"
+          "options" = {
+            "awslogs-group"         = "/ecs/Go-API"
+            "awslogs-region"        = "us-west-2"
+            "awslogs-stream-prefix" = "ecs"
+          }
+        }
         "environment"= [
           {
             "name"  = "HOST"
